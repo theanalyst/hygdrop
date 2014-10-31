@@ -2,7 +2,7 @@
 	re
 	[functools [partial lru_cache]])
 
-(with-decorator (kwapply (lru_cache) {"maxsize" 256})
+(with-decorator (lru_cache {"maxsize" 256})
   (defun get-github-issue [connection target issue
 			   &optional [project "hylang"] [repo "hy"]
 			   [dry-run False]]
@@ -32,7 +32,7 @@
 	    (.join " " message)
 	    (.notice connection target (.join " " message))))))))
 
-(with-decorator (kwapply (lru_cache) {"maxsize" 256})
+(with-decorator (lru_cache {"maxsize" 256})
   (defun get-github-commit [connection target commit
 			    &optional [project "hylang"] [repo "hy"]
 			    [dry-run False]]
@@ -55,7 +55,7 @@
 	    (.join " " message)
 	    (.notice connection target (.join " " message))))))))
 
-(with-decorator (kwapply (lru_cache) {"maxsize" 256})
+(with-decorator (lru_cache {"maxsize" 256})
   (defun get-core-members [connection target &optional [project "hylang"]
 			   [dry-run False]]
     (let [[api-url (.format "https://api.github.com/orgs/{}/members"
